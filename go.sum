@@ -1,0 +1,4 @@
+github.com/gonebot-dev/gonebot v0.1.1 h1:zOZLLZSLFDNa+zIRElelWFDmxj1WTo0uKiRE7nhfgNE=
+github.com/gonebot-dev/gonebot v0.1.1/go.mod h1:cjMN0ZYmkGu3XwVTVnBIWlH1Xa8EzqiERpl/OwlICOY=
+github.com/joho/godotenv v1.5.1 h1:7eLL/+HRGLY0ldzfGMeQkb7vMd0as4CfYvUVzLqw0N0=
+github.com/joho/godotenv v1.5.1/go.mod h1:f4LDr5Voq0i2e/R5DDNOoa2zzDfwtkZa6DnEwAbqwq4=
