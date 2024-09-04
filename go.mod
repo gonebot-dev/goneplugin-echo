@@ -2,6 +2,12 @@ module github.com/gonebot-dev/goneplugin-echo
 
 go 1.22.6
 
-require github.com/gonebot-dev/gonebot v0.1.1
+require github.com/gonebot-dev/gonebot v0.1.2
 
-require github.com/joho/godotenv v1.5.1 // indirect
+require (
+	github.com/gorilla/websocket v1.5.3 // indirect
+	github.com/joho/godotenv v1.5.1 // indirect
+	github.com/tidwall/gjson v1.17.3 // indirect
+	github.com/tidwall/match v1.1.1 // indirect
+	github.com/tidwall/pretty v1.2.1 // indirect
+)

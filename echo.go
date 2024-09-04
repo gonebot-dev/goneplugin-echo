@@ -8,8 +8,7 @@ import (
 	"github.com/gonebot-dev/gonebot/plugins"
 )
 
-func echoHandler(msg messages.MessageStruct) messages.ResultStruct {
-	result := messages.ResultStruct{}
+func echoHandler(msg messages.IncomingStruct) (result messages.ResultStruct) {
 	result.Text = msg.Text
 
 	dResult, _ := json.Marshal(result)
