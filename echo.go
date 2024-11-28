@@ -11,7 +11,7 @@ var Echo plugin.GonePlugin
 
 func init() {
 	Echo.Name = "Echo"
-	Echo.Version = "v0.1.0"
+	Echo.Version = "v0.1.1"
 	Echo.Description = "Reply the same message of what you have sent"
 
 	Echo.Handlers = append(Echo.Handlers, plugin.GoneHandler{
