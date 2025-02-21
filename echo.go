@@ -8,7 +8,7 @@ import (
 	"github.com/gonebot-dev/gonebot/plugin/handler"
 )
 
-var Echo plugin.GonePlugin
+var EchoPlugin plugin.GonePlugin
 
 var echo_prefix string = "echo"
 
@@ -37,12 +37,16 @@ func echoHandler(incomingMsg message.Message, resultMsg *message.Message) (block
 }
 
 func init() {
-	Echo.Name = "Echo"
-	Echo.Version = "v2.0.alpha"
-	Echo.Description = "Reply the same message of what you have sent"
+	EchoPlugin.Name = "Echo"
+	EchoPlugin.Version = "v2.0.alpha"
+	EchoPlugin.Description = "Reply the same message of what you have sent"
 
-	Echo.Handlers = append(Echo.Handlers, handler.GoneHandler{
+	EchoPlugin.Handlers = append(EchoPlugin.Handlers, handler.GoneHandler{
 		Matcher: echoMatcher,
 		Handler: echoHandler,
 	})
+}
+
+func GetPlugin() plugin.GonePlugin {
+	return EchoPlugin
 }
