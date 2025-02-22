@@ -24,10 +24,10 @@ func echoMatcher(msg message.Message) bool {
 }
 
 func echoHandler(incomingMsg message.Message, resultMsg *message.Message) (block bool) {
-	for _, seg := range incomingMsg.Segments {
+	for i, seg := range incomingMsg.Segments {
 		if seg.Type == "text" {
 			if strings.HasPrefix(seg.Content, echo_prefix) {
-				seg.Content = strings.Trim(seg.Content, echo_prefix)
+				incomingMsg.Segments[i].Content = seg.Content[4:]
 				break
 			}
 		}
