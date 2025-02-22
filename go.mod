@@ -1,7 +1,5 @@
 module github.com/gonebot-dev/goneplugin-echo
 
-go 1.22.7
+go 1.23.5
 
-require github.com/gonebot-dev/gonebot v1.0.2
-
-require github.com/joho/godotenv v1.5.1 // indirect
+require github.com/gonebot-dev/gonebot v1.1.7-0.20250219082533-282a014755f0

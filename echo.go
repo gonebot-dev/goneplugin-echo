@@ -1,25 +1,52 @@
 package echo
 
 import (
-	"github.com/gonebot-dev/gonebot/adapter"
+	"strings"
+
 	"github.com/gonebot-dev/gonebot/message"
 	"github.com/gonebot-dev/gonebot/plugin"
-	"github.com/gonebot-dev/gonebot/plugin/rule"
+	"github.com/gonebot-dev/gonebot/plugin/handler"
 )
 
-var Echo plugin.GonePlugin
+var EchoPlugin plugin.GonePlugin
+
+var echo_prefix string = "echo"
+
+func echoMatcher(msg message.Message) bool {
+	for _, seg := range msg.Segments {
+		if seg.Type == "text" {
+			if strings.HasPrefix(seg.Content, echo_prefix) {
+				return true
+			}
+		}
+	}
+	return false
+}
+
+func echoHandler(incomingMsg message.Message, resultMsg *message.Message) (block bool) {
+	for i, seg := range incomingMsg.Segments {
+		if seg.Type == "text" {
+			if strings.HasPrefix(seg.Content, echo_prefix) {
+				incomingMsg.Segments[i].Content = seg.Content[4:]
+				break
+			}
+		}
+	}
+	resultMsg.Segments = append(resultMsg.Segments, incomingMsg.Segments...)
+	return true
+}
 
 func init() {
-	Echo.Name = "Echo"
-	Echo.Version = "v0.1.1"
-	Echo.Description = "Reply the same message of what you have sent"
+	EchoPlugin.Name = "Echo"
+	EchoPlugin.Version = "v2.0.alpha"
+	EchoPlugin.Description = "Reply the same message of what you have sent"
 
-	Echo.Handlers = append(Echo.Handlers, plugin.GoneHandler{
-		Rules: rule.NewRules(rule.ToMe()).And(rule.Command("echo")),
-		Handler: func(a *adapter.Adapter, msg message.Message) bool {
-			reply := message.NewReply(msg).Join(msg)
-			a.SendMessage(reply)
-			return true
-		},
+	EchoPlugin.Handlers = append(EchoPlugin.Handlers, handler.GoneHandler{
+		Matcher: echoMatcher,
+		Handler: echoHandler,
 	})
+}
+
+func GetPlugin() plugin.GonePlugin {
+	return EchoPlugin
 }
